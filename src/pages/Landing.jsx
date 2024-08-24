@@ -1,8 +1,6 @@
 import { customFetch } from "../utils";
 const url = "/items/all-items";
-import { ItemsGrid } from "../components";
-import Filters from "../components/Filters.jsx";
-import Pagination from "../components/Pagination";
+import { Filters, ItemsGrid, Pagination } from "../components";
 
 export const loader = async ({ request }) => {
   const params = Object.fromEntries([
