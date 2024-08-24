@@ -1,7 +1,7 @@
 import { customFetch } from "../utils";
 const url = "/items/all-items";
 import { ItemsGrid, Pagination } from "../components";
-import Filters from "../components/Filters";
+import Filters from "../components/Filters.jsx";
 
 export const loader = async ({ request }) => {
   const params = Object.fromEntries([
