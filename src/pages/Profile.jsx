@@ -1,7 +1,6 @@
-import React from "react";
 import { Link, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 export const loader = (store) => () => {
   const user = store.getState().userState.user;

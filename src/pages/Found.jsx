@@ -1,5 +1,5 @@
-import React, { useState ,useRef } from "react";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { useRef } from "react";
+import { redirect, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import FormSelect from "../components/FormSelect";
 import { FormInput } from "../components";
@@ -44,7 +44,7 @@ const Found = () => {
   const { landingData } = useLoaderData();
   const { meta } = landingData;
 
-  const formRef = useRef(null)
+  const formRef = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
