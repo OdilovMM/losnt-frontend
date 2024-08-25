@@ -56,7 +56,7 @@ const UserItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`${imageUrl}/${photo}`}
+          src={`${imageUrl}${photo}`}
           alt={name}
           className="w-[250px] h-[250px] object-cover rounded-lg lg:w-full  "
         />

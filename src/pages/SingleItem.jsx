@@ -40,7 +40,7 @@ const SingleItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`${imageUrl}/${photo}`}
+          src={`${imageUrl}${photo}`}
           alt={name}
           className="w-96 h-96 object-cover rounded-lg lg:w-full  "
         />
