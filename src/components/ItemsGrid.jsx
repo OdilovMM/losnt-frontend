@@ -29,7 +29,7 @@ const ItemsGrid = () => {
           >
             <figure>
               <img
-                src={`${imageUrl}${photo}`}
+                src={`${imageUrl}/uploads/${photo}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />
