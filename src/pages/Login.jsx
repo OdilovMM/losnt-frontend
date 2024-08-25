@@ -51,11 +51,7 @@ const Login = () => {
           </Link>{" "}
         </p>
         <p className="text-center">
-          <Link
-            to="/
-          "
-            className="ml-2 link link-hover link-primary"
-          >
+          <Link to="/" className="ml-2 link link-hover link-primary">
             Back to home
           </Link>{" "}
         </p>

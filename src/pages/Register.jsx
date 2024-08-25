@@ -25,18 +25,10 @@ const Register = () => {
         className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
       >
         <h4 className="text-center text-3xl font-bold">Register</h4>
-        <FormInput type="text" label="Name" name="name"  />
+        <FormInput type="text" label="Name" name="name" />
         <FormInput type="number" label="Mobile" name="mobile" />
-        <FormInput
-          type="email"
-          label="Email"
-          name="email"
-        />
-        <FormInput
-          type="password"
-          label="Password"
-          name="password"
-        />
+        <FormInput type="email" label="Email" name="email" />
+        <FormInput type="password" label="Password" name="password" />
         <div className="mt-4">
           <SubmitBtn text="Login" />
         </div>
@@ -47,11 +39,7 @@ const Register = () => {
           </Link>{" "}
         </p>
         <p className="text-center">
-          <Link
-            to="/
-          "
-            className="ml-2 link link-hover link-primary"
-          >
+          <Link to="/" className="ml-2 link link-hover link-primary">
             Back to home
           </Link>{" "}
         </p>
