@@ -37,10 +37,16 @@ const MyList = () => {
       </div>
     );
 
+
+
   return (
     <div className="pt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4 ">
       {items.map((item, _id) => {
         const { name, city, foundDate, orientation, photo } = item;
+
+        const correctedPhotoPath = photo.includes("/uploads//uploads/")
+          ? photo.replace("/uploads//uploads/", "/uploads/")
+          : photo;
         return (
           <Link
             key={_id}
@@ -49,7 +55,7 @@ const MyList = () => {
           >
             <figure>
               <img
-               src={`https://lost-and-found-api-r3ku.onrender.com${photo}`}
+               src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />

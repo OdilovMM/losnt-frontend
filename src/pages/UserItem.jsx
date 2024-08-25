@@ -27,6 +27,10 @@ const UserItem = () => {
     street,
   } = item;
 
+  const correctedPhotoPath = photo.includes("/uploads//uploads/")
+  ? photo.replace("/uploads//uploads/", "/uploads/")
+  : photo;
+
   const [status, setStatus] = useState(initialStatus);
 
   const handleChangeStatus = async () => {
@@ -56,7 +60,7 @@ const UserItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`https://lost-and-found-api-r3ku.onrender.com${photo}`}
+          src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
           alt={name}
           className="w-[250px] h-[250px] object-cover rounded-lg lg:w-full  "
         />
