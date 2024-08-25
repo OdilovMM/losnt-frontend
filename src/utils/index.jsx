@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // export const imageUrl = "http://localhost:5000";
-export const imageUrl = "https://lost-and-found-api-r3ku.onrender.com";
+export const imageUrl = "https://lost-and-found-api-r3ku.onrender.com/";
 
 // const productionUrl = "http://localhost:5000/api/v1";
 const productionUrl = "https://lost-and-found-api-r3ku.onrender.com/api/v1";
