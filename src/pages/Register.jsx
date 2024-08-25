@@ -9,10 +9,10 @@ export const action = async ({ request }) => {
 
   try {
     const response = await customFetch.post("/auth/register", data);
-    toast.success(response.data.msg);
+    toast.success(response.data.status);
     return redirect("/login");
   } catch (error) {
-    toast.error(error.response.data.msg);
+    toast.error(error.response.data.message);
     return null;
   }
 };

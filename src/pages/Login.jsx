@@ -13,10 +13,10 @@ export const action =
     try {
       const response = await customFetch.post("/auth/login", data);
       store.dispatch(loginUser(response.data));
-      toast.success(response.data.msg);
+      toast.success(response.data.status);
       return redirect("/");
     } catch (error) {
-      toast.error(error.response.data.msg);
+      toast.error(error.response.data.message);
       return null;
     }
   };

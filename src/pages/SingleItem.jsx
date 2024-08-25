@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { customFetch } from "../utils";
+import { customFetch, imageUrl } from "../utils";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { useSelector } from "react-redux";
@@ -11,6 +11,7 @@ export const loader = async ({ params }) => {
 };
 
 const SingleItem = () => {
+  
   const user = useSelector((state) => state.userState.user);
   const { item } = useLoaderData();
   const {
@@ -39,7 +40,7 @@ const SingleItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`https://lost-and-found-api-r3ku.onrender.com/${photo}`}
+          src={`${imageUrl}/${photo}`}
           alt={name}
           className="w-96 h-96 object-cover rounded-lg lg:w-full  "
         />

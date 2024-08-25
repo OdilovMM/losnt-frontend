@@ -10,7 +10,6 @@ import {
   HomeLayout,
   Item,
   Landing,
-  List,
   Login,
   Lost,
   Profile,
@@ -18,16 +17,15 @@ import {
   SingleItem,
 } from "./pages";
 import { loader as landingLoader } from "./pages/Landing";
-import { action as foundAction, loader as foundLoader } from "./pages/Found";
+import { loader as foundLoader } from "./pages/Found";
 import { loader as singleLoader } from "./pages/SingleItem";
 import { loader as profileLoader } from "./pages/Profile";
 import { loader as lostLoader } from "./pages/Lost";
-import { combinedListLoader } from "./pages/List";
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { store } from "./store";
 import { toast } from "react-toastify";
-import MyList from "./components/MyList";
+import MyList, { myListLoader } from "./components/MyList";
 import UserItem, { myLoader } from "./pages/UserItem";
 
 const combinedLoader = async ({ request, params }) => {
@@ -75,12 +73,11 @@ const router = createBrowserRouter([
         path: "found",
         element: <Found />,
         loader: combinedLoader,
-        action: foundAction,
       },
       {
         path: "list/my-list",
         element: <MyList />,
-        loader: combinedListLoader,
+        loader: myListLoader,
       },
       {
         path: "items/:itemId",

@@ -1,11 +1,34 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, redirect, useLoaderData } from "react-router-dom";
 import moment from "moment";
 import { MdAccessTime } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuildingColumns } from "react-icons/fa6";
+import { customFetch, imageUrl } from "../utils";
+import { toast } from "react-toastify";
+import { store } from "../store";
+
+export const myListLoader = async ({ request, params }) => {
+  const user = store.getState().userState.user;
+  if (!user) {
+    toast.warn("Iltimos, akkauntingizga kiring");
+    return redirect("/");
+  }
+
+  try {
+    const response = await customFetch.get("/user/all-my-items");
+    const { items } = response.data.my_posts;
+
+    return { items };
+  } catch (error) {
+    console.error("Error fetching user items:", error);
+    toast.error("Elementlarni yuklashda xatolik yuz berdi.");
+    return redirect("/"); 
+  }
+};
 
 const MyList = () => {
   const { items } = useLoaderData();
+  
 
   if (items.length === 0)
     return (
@@ -26,7 +49,7 @@ const MyList = () => {
           >
             <figure>
               <img
-                src={`https://lost-and-found-api-r3ku.onrender.com/${photo}`}
+                src={`${imageUrl}/${photo}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />

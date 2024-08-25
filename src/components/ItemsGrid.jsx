@@ -4,9 +4,11 @@ import moment from "moment";
 import { MdAccessTime } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuildingColumns } from "react-icons/fa6";
+import { imageUrl } from "../utils";
 
 const ItemsGrid = () => {
   const { items } = useLoaderData();
+  
 
   if (items.length === 0)
     return (
@@ -27,7 +29,7 @@ const ItemsGrid = () => {
           >
             <figure>
               <img
-                src={`https://lost-and-found-api-r3ku.onrender.com/${photo}`}
+                src={`${imageUrl}/${photo}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />

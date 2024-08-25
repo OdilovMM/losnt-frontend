@@ -14,28 +14,6 @@ export const loader = (store) => () => {
   return null;
 };
 
-export const action = async ({ request }) => {
-  const data = await request.formData();
-  const formData = new FormData();
-
-
-  data.forEach((value, key) => {
-    formData.append(key, value);
-  });
-
-  try {
-    const response = await customFetch.post("/items/add-item", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    toast.success(response.data.msg);
-    return redirect("/");
-  } catch (error) {
-    toast.error(error.response?.data?.msg || error.message);
-    return null;
-  }
-};
 
 const Found = () => {
   const { landingData } = useLoaderData();
@@ -44,8 +22,8 @@ const Found = () => {
   const formRef = useRef(null);
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission
-    const formData = new FormData(event.target); // Use the form element itself to construct FormData
+    event.preventDefault(); 
+    const formData = new FormData(event.target); 
 
     try {
       const response = await customFetch.post("/items/add-item", formData, {
@@ -54,8 +32,8 @@ const Found = () => {
         },
       });
       toast.success(response.data.msg);
+      redirect("/list/my-list");
       formRef.current.reset();
-      return redirect("/");
     } catch (error) {
       toast.error(error.response?.data?.msg || error.message);
     }
