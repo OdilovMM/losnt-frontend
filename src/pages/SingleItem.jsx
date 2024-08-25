@@ -39,7 +39,7 @@ const SingleItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`http://localhost:5000/${photo}`}
+          src={`https://lost-and-found-api-r3ku.onrender.com/${photo}`}
           alt={name}
           className="w-96 h-96 object-cover rounded-lg lg:w-full  "
         />
