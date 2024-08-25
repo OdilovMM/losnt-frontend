@@ -27,6 +27,8 @@ import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { store } from "./store";
 import { toast } from "react-toastify";
+import MyList from "./components/MyList";
+import UserItem, { myLoader } from "./pages/UserItem";
 
 const combinedLoader = async ({ request, params }) => {
   const user = store.getState().userState.user;
@@ -76,14 +78,19 @@ const router = createBrowserRouter([
         action: foundAction,
       },
       {
-        path: "list",
-        element: <List />,
+        path: "list/my-list",
+        element: <MyList />,
         loader: combinedListLoader,
       },
       {
         path: "items/:itemId",
         element: <SingleItem />,
         loader: singleLoader,
+      },
+      {
+        path: "list/my-list/:itemId",
+        element: <UserItem />,
+        loader: myLoader,
       },
 
       { path: "help", element: <Help /> },

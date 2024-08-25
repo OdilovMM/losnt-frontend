@@ -18,7 +18,6 @@ export const action = async ({ request }) => {
   const data = await request.formData();
   const formData = new FormData();
 
-  console.log(data);
 
   data.forEach((value, key) => {
     formData.append(key, value);
@@ -30,11 +29,9 @@ export const action = async ({ request }) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response);
     toast.success(response.data.msg);
     return redirect("/");
   } catch (error) {
-    console.log(error.response?.data?.msg || error.message);
     toast.error(error.response?.data?.msg || error.message);
     return null;
   }

@@ -16,7 +16,6 @@ export const action =
       toast.success(response.data.msg);
       return redirect("/");
     } catch (error) {
-      console.log(error.response.data.msg);
       toast.error(error.response.data.msg);
       return null;
     }

@@ -53,7 +53,7 @@ const Header = () => {
                       <Link to="/found">Topib oldim</Link>
                     </li>
                     <li>
-                      <Link to="/list">Topganlarim</Link>
+                      <Link to="/list/my-list">Topganlarim</Link>
                     </li>
                     <li>
                       <button onClick={handleLogout}>Chiqish</button>

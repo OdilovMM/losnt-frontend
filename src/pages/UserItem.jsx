@@ -2,18 +2,19 @@ import { useLoaderData } from "react-router-dom";
 import { customFetch } from "../utils";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-export const loader = async ({ params }) => {
+export const myLoader = async ({ params }) => {
   const response = await customFetch(`/items/all-items/${params.itemId}`);
   const item = response.data.item;
   return { item };
 };
 
-const SingleItem = () => {
-  const user = useSelector((state) => state.userState.user);
+const UserItem = () => {
   const { item } = useLoaderData();
   const {
+    _id,
     name,
     photo,
     foundDate,
@@ -21,19 +22,34 @@ const SingleItem = () => {
     contactNumber,
     orientation,
     region,
-    status,
+    status: initialStatus,
     street,
   } = item;
+
+  const [status, setStatus] = useState(initialStatus);
+
+  const handleChangeStatus = async () => {
+    try {
+      const newStatus = status === "open" ? "claimed" : "open";
+      const response = await customFetch.patch(`/user/all-my-items/${_id}`, {
+        status: newStatus,
+      });
+      setStatus(newStatus);
+      toast.success(response.data.msg);
+    } catch (error) {
+      console.error("An error occurred while updating status", error);
+    }
+  };
 
   return (
     <section>
       <div className="text-md breadcrumbs">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/list/my-list">Mening topilmalarim</Link>
           </li>
           <li>
-            <Link to="/items">Items</Link>
+            <Link to="/my-list">Asosiy ma'lumotlar</Link>
           </li>
         </ul>
       </div>
@@ -41,7 +57,7 @@ const SingleItem = () => {
         <img
           src={`http://localhost:5000/${photo}`}
           alt={name}
-          className="w-96 h-96 object-cover rounded-lg lg:w-full  "
+          className="w-[250px] h-[250px] object-cover rounded-lg lg:w-full  "
         />
         <div>
           <div className="flex justify-normal gap-4 items-center">
@@ -74,33 +90,26 @@ const SingleItem = () => {
             <h1>{contactNumber}</h1>
           </div>
 
-          <div className="mt-6 w-[150px] rounded-md">
-            {status === "open" ? (
-              <>
-                {user ? (
-                  <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
-                    Davo qilish
-                  </button>
-                ) : (
-                  <Link
-                    to="/login"
-                    className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-                  >
-                    Davo qilish uchun hisobga kiring
-                  </Link>
-                )}
-              </>
-            ) : (
-              <>
-                <p className="p-2 rounded-md bg-red-300 block">
-                  Egasi topildi
+          <div className="mt-6">
+            <div className="my-4 w-[150px] rounded-md">
+              {status === "open" ? (
+                <p className=" p-2 rounded-md bg-slate-300 block">
+                  Egasi topilmagan
                 </p>
-              </>
-            )}
+              ) : (
+                <p className="p-2 rounded-md bg-red-300 block">Egasi topildi</p>
+              )}
+            </div>
+            <button
+              onClick={handleChangeStatus}
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
+            >
+              E'lon statusini o'zgartirish
+            </button>
           </div>
         </div>
       </div>
     </section>
   );
 };
-export default SingleItem;
+export default UserItem;

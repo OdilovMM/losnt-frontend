@@ -31,7 +31,7 @@ const Profile = () => {
         <Link to='/found' className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
           Topib Oldim
         </Link>
-        <Link to='/list' className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+        <Link to='/list/my-list' className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
           Ro'yxat
         </Link>
       </div>
