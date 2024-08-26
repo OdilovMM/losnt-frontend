@@ -12,7 +12,6 @@ export const myLoader = async ({ params }) => {
 };
 
 const UserItem = () => {
-  
   const { item } = useLoaderData();
   const {
     _id,
@@ -28,8 +27,8 @@ const UserItem = () => {
   } = item;
 
   const correctedPhotoPath = photo.includes("/uploads//uploads/")
-  ? photo.replace("/uploads//uploads/", "/uploads/")
-  : photo;
+    ? photo.replace("/uploads//uploads/", "/uploads/")
+    : photo;
 
   const [status, setStatus] = useState(initialStatus);
 
@@ -60,7 +59,8 @@ const UserItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
+          crossOrigin="anonymous"
+          src={`${imageUrl}${correctedPhotoPath}`}
           alt={name}
           className="w-[250px] h-[250px] object-cover rounded-lg lg:w-full  "
         />

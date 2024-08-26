@@ -22,13 +22,12 @@ export const myListLoader = async ({ request, params }) => {
   } catch (error) {
     console.error("Error fetching user items:", error);
     toast.error("Elementlarni yuklashda xatolik yuz berdi.");
-    return redirect("/"); 
+    return redirect("/");
   }
 };
 
 const MyList = () => {
   const { items } = useLoaderData();
-  
 
   if (items.length === 0)
     return (
@@ -36,8 +35,6 @@ const MyList = () => {
         <p className="text-3xl w-full">Hech narsa topilmadi</p>
       </div>
     );
-
-
 
   return (
     <div className="pt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4 ">
@@ -55,7 +52,8 @@ const MyList = () => {
           >
             <figure>
               <img
-               src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
+                crossOrigin="anonymous"
+                src={`${imageUrl}${correctedPhotoPath}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />

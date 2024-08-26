@@ -32,7 +32,8 @@ const ItemsGrid = () => {
           >
             <figure>
               <img
-                src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
+                crossOrigin="anonymous"
+                src={`${imageUrl}${correctedPhotoPath}`}
                 alt={name}
                 className=" h-64 md:h-48 w-full object-cover"
               />

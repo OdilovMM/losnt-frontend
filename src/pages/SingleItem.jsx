@@ -11,7 +11,6 @@ export const loader = async ({ params }) => {
 };
 
 const SingleItem = () => {
-  
   const user = useSelector((state) => state.userState.user);
   const { item } = useLoaderData();
   const {
@@ -27,8 +26,8 @@ const SingleItem = () => {
   } = item;
 
   const correctedPhotoPath = photo.includes("/uploads//uploads/")
-  ? photo.replace("/uploads//uploads/", "/uploads/")
-  : photo;
+    ? photo.replace("/uploads//uploads/", "/uploads/")
+    : photo;
 
   return (
     <section>
@@ -44,7 +43,8 @@ const SingleItem = () => {
       </div>
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
         <img
-          src={`https://lost-and-found-api-r3ku.onrender.com${correctedPhotoPath}`}
+          crossOrigin="anonymous"
+          src={`${imageUrl}${correctedPhotoPath}`}
           alt={name}
           className="w-96 h-96 object-cover rounded-lg lg:w-full  "
         />
@@ -91,15 +91,13 @@ const SingleItem = () => {
                     to="/login"
                     className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
                   >
-                    Davo qilish uchun hisobga kiring
+                    Hisobga kiring
                   </Link>
                 )}
               </>
             ) : (
               <>
-                <p className="p-2 rounded-md bg-red-300 block">
-                  Egasi topildi
-                </p>
+                <p className="p-2 rounded-md bg-red-300 block">Egasi topildi</p>
               </>
             )}
           </div>
